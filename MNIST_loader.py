@@ -61,8 +61,8 @@ class MNIST:
         mnist = np.load(path)
 
         for dataset in ["train", "dev", "test"]:
-            data = dict((key[len(dataset) + 1:]), mnist[key]) for key in mnist if key.startswith(dataset)
-
+            data = dict((key[len(dataset) + 1:], mnist[key])
+                        for key in mnist if key.startswith(dataset))
             # This gives each of train, dev, test properties of Dataset class, which in turn
             # enables us to do things like mnist.data.train["images"], this also shuffles only
             # for train data
